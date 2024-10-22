@@ -1,3 +1,5 @@
+![vercount react banner@3x](https://github.com/user-attachments/assets/a540dc18-8d92-4b46-a121-ad6580d3ef3d)
+
 # vercount-react
 
 [中文版本](./README.zh.md)
