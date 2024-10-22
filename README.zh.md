@@ -1,3 +1,8 @@
+<div align="right">
+  <a title="en" href="README.md"><img src="https://img.shields.io/badge/-English-545759?style=for-the-badge" alt="english"></a>
+  <img src="https://img.shields.io/badge/-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-4A628A?style=for-the-badge" alt="简体中文">
+</div>
+
 ![vercount react banner@3x](https://github.com/user-attachments/assets/a540dc18-8d92-4b46-a121-ad6580d3ef3d)
 
 # vercount-react
