@@ -1,9 +1,11 @@
 "use client"
 
+import { useState } from "react";
 import { useVercount } from "vercount-react";
 
 export default function Home() {
-    const visitorData = useVercount();
+  const [count, setCount] = useState(0);
+  const visitorData = useVercount();
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -15,6 +17,7 @@ export default function Home() {
             <li>Site UV: {visitorData.siteUv}</li>
           </div>
         </ol>
+        <button onClick={() => setCount(count + 1)}>Re-render</button>
       </main>
     </div>
   );

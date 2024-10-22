@@ -1,6 +1,6 @@
 {
   "name": "vercount-react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "description": "The React component for Vercount, a simple website counter powered by NextJS.",
   "main": "dist/index.js",
