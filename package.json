@@ -23,7 +23,8 @@
   "license": "GPL-3.0",
   "scripts": {
     "build": "bunchee",
-    "dev": "bunchee --watch"
+    "dev": "bunchee --watch",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
