@@ -8,8 +8,6 @@
 
 # vercount-react
 
-[中文版本](./README.zh)
-
 **vercount-react** is a React hook designed for [Vercount](https://github.com/EvanNotFound/vercount), a fast and efficient website counter powered by Next.js and Redis. It provides real-time website traffic statistics while being reliable, fast, and secure.
 
 If you want to use Vercount as plain JavaScript, check out the [vercount](https://github.com/EvanNotFound/vercount) repository.

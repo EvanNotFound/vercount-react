@@ -7,8 +7,6 @@
 
 # vercount-react
 
-[English Version](./README.md)
-
 **vercount-react** 是为 [Vercount](https://github.com/EvanNotFound/vercount) 设计的 React Hook，它提供了一个简单且高效的方式来统计网站流量。Vercount 是基于 Next.js 和 Redis 的快速网站计数器，适合那些需要可靠、快速、安全的流量统计方案的网站。
 
 如果你更喜欢使用纯 JavaScript，请查看 [vercount](https://github.com/EvanNotFound/vercount) 仓库。
