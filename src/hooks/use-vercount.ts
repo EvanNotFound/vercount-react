@@ -43,7 +43,7 @@ export const useVercount = () => {
 
   const fetchVisitorCount = async () => {
     const baseUrl = getBaseUrl();
-    const apiUrl = `${baseUrl}/log?jsonpCallback=VisitorCountCallback`;
+    const apiUrl = `${baseUrl}/api/v2/log`;
     
     // Generate browser token
     const browserToken = generateBrowserToken();
@@ -59,21 +59,29 @@ export const useVercount = () => {
           },
           body: JSON.stringify({ 
             url: window.location.href,
-            token: browserToken
+            token: browserToken,
+            version: "v2" // Add version parameter for v2 API
           }),
         });
 
-        const data = await response.json();
-        const { site_pv, page_pv, site_uv } = data;
+        const responseData = await response.json();
+        
+        // Handle the new response structure with status, message, and data
+        if (responseData.status === "success" && responseData.data) {
+          const { site_pv, page_pv, site_uv } = responseData.data;
 
-        const newData = {
-          sitePv: site_pv,
-          pagePv: page_pv,
-          siteUv: site_uv,
-        };
+          const newData = {
+            sitePv: site_pv.toString(),
+            pagePv: page_pv.toString(),
+            siteUv: site_uv.toString(),
+          };
 
-        setVisitorData(newData);
-        localStorage.setItem('visitorCountData', JSON.stringify(newData));
+          setVisitorData(newData);
+          localStorage.setItem('visitorCountData', JSON.stringify(newData));
+        } else {
+          console.warn("API returned error:", responseData.message);
+          throw new Error(responseData.message || "API error");
+        }
       } catch (corsError) {
         // If we get a CORS error, try again without the custom header
         console.warn("CORS error with token header, retrying without custom header:", corsError);
@@ -84,21 +92,29 @@ export const useVercount = () => {
           },
           body: JSON.stringify({ 
             url: window.location.href,
-            token: browserToken // Still include token in body
+            token: browserToken,
+            version: "v2" // Add version parameter for v2 API
           }),
         });
         
-        const data = await fallbackResponse.json();
-        const { site_pv, page_pv, site_uv } = data;
+        const responseData = await fallbackResponse.json();
+        
+        // Handle the new response structure with status, message, and data
+        if (responseData.status === "success" && responseData.data) {
+          const { site_pv, page_pv, site_uv } = responseData.data;
 
-        const newData = {
-          sitePv: site_pv,
-          pagePv: page_pv,
-          siteUv: site_uv,
-        };
+          const newData = {
+            sitePv: site_pv.toString(),
+            pagePv: page_pv.toString(),
+            siteUv: site_uv.toString(),
+          };
 
-        setVisitorData(newData);
-        localStorage.setItem('visitorCountData', JSON.stringify(newData));
+          setVisitorData(newData);
+          localStorage.setItem('visitorCountData', JSON.stringify(newData));
+        } else {
+          console.warn("API returned error:", responseData.message);
+          throw new Error(responseData.message || "API error");
+        }
       }
     } catch (error) {
       console.error("Error fetching visitor count:", error);
